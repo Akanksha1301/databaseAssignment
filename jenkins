@@ -5,14 +5,14 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout your Git repository
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/barkhagupta2104/Huddle-Landing-page.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/Akanksha1301/databaseAssignment.git']]])
             }
         }
 
         stage('Copy Files') {
             steps {
                 // Use the bat step to run xcopy
-                bat(script: 'xcopy /s /e /y "D:\\Bookstagrammars-website-master" "C:\\Apache24\\htdocs"')
+                bat(script: 'xcopy /s /e /y "C:\Users\ASUS\Desktop\webDAssignment\databaseWesiter" "C:\\Apache24\\htdocs"')
             }
         }
 
