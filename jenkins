@@ -4,16 +4,11 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Check out the code from your GitHub repository
-                checkout([$class: 'GitSCM', 
-                    branches: [[name: 'main']], 
-                    doGenerateSubmoduleConfigurations: false, 
-                    extensions: [], 
-                    submoduleCfg: [], 
-                    userRemoteConfigs: [[url: 'https://github.com/Akanksha1301/databaseAssignment.git']]
-                ])
+                // Checkout your Git repository
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/barkhagupta2104/Huddle-Landing-page.git']]])
             }
         }
+
         stage('Copy Files') {
             steps {
                 // Use the bat step to run xcopy
@@ -22,26 +17,16 @@ pipeline {
         }
 
         // Add more stages as needed for your pipeline
-        }
+    }
 
-        post {
-            success {
-                // Define steps to execute on success
-                echo 'The build was successful!'
-            }
-            failure {
-                // Define steps to execute on failure
-                echo 'The build failed!'
-            }
+    post {
+        success {
+            // Define steps to execute on success
+            echo 'The build was successful!'
         }
-
-        //stage('Deploy to Apache') {
-          //  steps {
-                // Copy the code to the Apache document root directory
-            //    bat script: '''
-              //      xcopy /s /e /y "C:\Users\ASUS\Desktop\webDAssignment\databaseWesite.github.io" "C:\\Apache24\\htdocs"
-               // '''
-            //}
-        //}
+        failure {
+            // Define steps to execute on failure
+            echo 'The build failed!'
+        }
     }
 }
