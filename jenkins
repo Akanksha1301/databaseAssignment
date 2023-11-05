@@ -15,14 +15,6 @@ pipeline {
                 bat(script: 'xcopy /s /e /y "D:\\databaseWesite" "C:\\Apache24\\htdocs"')
             }
         }
-        stage('Deploy to Apache') {
-            steps {
-                // Copy the code to the Apache document root directory
-                bat script: '''
-                    xcopy /s /e /y "D:\\databaseWesite.github.io" "C:\\Apache24\\htdocs"
-                '''
-            }
-        }
 
         // Add more stages as needed for your pipeline
     }
